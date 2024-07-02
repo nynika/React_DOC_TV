@@ -1,0 +1,256 @@
+
+@font-face {
+	font-family: 'MyFont';
+	src: url('../fonts/82a2832bc3b3dcb58998c4548b3850fb.eot');
+	src: url('../fonts/82a2832bc3b3dcb58998c4548b3850fb.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/82a2832bc3b3dcb58998c4548b3850fb.woff2') format('woff2'),
+		 url('../fonts/82a2832bc3b3dcb58998c4548b3850fb.woff') format('woff'),
+		 url('../fonts/82a2832bc3b3dcb58998c4548b3850fb.ttf') format('truetype'),
+		 url('../fonts/82a2832bc3b3dcb58998c4548b3850fb.svg#MyFont') format('svg');
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+
+body {
+	overflow:hidden;
+	background-image: url(../images/odd.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+ul {
+	margin : 0px;
+	width: 100%;
+	height: 100%;
+	list-style-type: none;
+}
+
+
+ul {
+	margin : 0px;
+	width: 100%;
+	height: 100%;
+	list-style-type: none;
+}
+
+.fullsize {
+  top:0px;left:0px;width:1080px;height:1920px;
+}
+
+.font{
+  font-family: 'Andes Rounded W01 Black';
+  font-weight: 900;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.hdrstyle {
+	left:20px;
+	padding-top: 5px;
+	font-size:36px;
+	color:#000;
+	line-height:1.0;
+	text-align:center;
+	text-transform: uppercase;
+}
+
+.subhdrstyle {
+	left:20px;
+	font-size:36px;
+	line-height:1.0;
+	text-align:center;
+	text-transform: uppercase;
+}
+
+.hdr {
+  	position:absolute;
+  	top: 20px; 
+  	left:0px;
+  	width:1080px;
+  	height:80px;
+	overflow:hidden;
+}
+
+.subhdr {
+	position: absolute;
+	top: 130px;
+	left: 0px;
+	width: 1080px;
+	height: 60px;
+	overflow: hidden;
+}
+
+
+
+.drBg {
+	position: relative;
+	width: 100%;
+	height: 300px;
+	top: 150px;
+	margin: auto;
+	padding-bottom: 60px;
+}
+
+
+.wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 300px;
+  }
+
+.drphotoSquare img {
+	width: 100%;
+}
+
+
+.drphotoSquare{
+  	position:absolute; 
+	  top: 8px;
+	  left: 0px; 
+	  border-radius: 50%;
+	  width: 275px;
+	  height: 275px;
+	  overflow: hidden;
+	  animation: morph 3s linear infinite;
+	  background: linear-gradient(to top, #FEFEFE 0%,#D5996F 100%);
+}
+
+.drphoto{
+  position:absolute;
+  top:0px;
+  left:0px;
+  background: transparent;
+}
+
+.divider {
+	position: absolute; width: 850px; top: 280px; left: 30px; height: 2px; background-color: #707070;
+}
+
+
+
+.effect-slide-in-right {
+    transform: translateX(20%);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+}
+
+.effect-slide-in-right.show  {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.effect-slide-in-bottom {
+    transform: translateY(20%);
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.effect-slide-in-bottom.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+  .drprofileBg {
+	position: relative;
+	top: 1%;
+	width: 920px;
+	height: 270px;
+	margin-left: 370px;
+	background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%,rgba(0,0,0,0.05) 100%);
+	border-radius: 10px;
+	border-bottom: #303030 solid 2px;
+	margin-bottom: 50px; /* Add margin-bottom to space out doctor containers */
+  }
+  
+  .doctors-image {
+	position: relative;
+	margin-top: -0%;
+	margin-left: -45%;
+	height: 270px;
+	width: 270px;
+	margin-bottom: 50px;
+	border-radius: 50%; /* Changed to 50% for circular image */
+	object-fit: cover;
+	z-index: 999;
+  }
+  
+   .doctor-name {
+	position: relative;
+	right: 32%;
+	margin-bottom: 145px;
+	width: 920px;
+	height: 80px;
+	overflow: hidden;
+	border-radius: 20px 10px 10px 10px;
+	background-color: #022633;
+	color: #FEFEFE;
+	font-size: 25px;
+	text-align: center;
+	padding: 25px 0px 20px;
+  }
+
+.doctor-name span {
+	display: block; /* Ensure the span takes up the full width */
+}
+
+  .hdrdivider{
+	position:relative;
+	margin-top:30px;
+	width:930px;
+	height:85px;
+    left:20.5%; 
+	border-bottom: #303030;
+	border-bottom-style: solid;
+	border-bottom-width: 4px;
+	border-top: #303030;
+	border-top-style: solid;
+	border-top-width: 4px;
+}
+
+  .head1 {
+	position: relative;
+	margin-top: -3.5%;
+	color: black;
+	font-size: 28px;
+	text-align: center;
+	font-weight:bold;
+  }
+  
+  .doctor-qualification, .doctor-designation, .doctor-subdept {
+	position: relative;
+	font-family: 'Andes Rounded W01 Black';
+	left: -10%;
+	text-align: left; /* Align text to the right */
+	overflow: hidden;
+	padding-right: 0px; /* Adjust padding as needed */
+	white-space: normal; 
+	word-wrap: break-word; /* Break long words to fit the container */
+	max-width: 650px; /* Adjusted maximum width */
+}
+
+.doctor-qualification {
+	top: -120px; /* Adjusted for proper positioning */
+	font-size: 1.2em; /* Adjusted font size */
+	font-weight: 700;
+	color: black;
+}
+
+.doctor-designation {
+	top: -120px; /* Adjusted for proper positioning */
+	font-size: 1.5em;
+	font-weight: 700;
+	color: black;
+	line-height: 1.5;
+}
+
+.doctor-subdept {
+	top: -115px; /* Adjusted for proper positioning */
+	font-size: 2em;
+	font-weight: 700;
+	color: #000000;
+	line-height: 1;
+}

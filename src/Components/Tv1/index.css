@@ -1,0 +1,51 @@
+
+.motherr {
+  transform: rotate(270deg);
+  width: 389px;
+  height: 389px;
+}
+
+
+.flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  gap: 10px;
+}
+
+
+
+.header {
+  margin: auto;
+  color: white;
+  background: #0000001a;
+  padding: 5px 10px; /* Adjust padding */
+  font-size: 18px;
+  text-align: center;
+  width: 389px;
+  /* height: 412px; */
+}
+
+.content-style {
+  margin: 5px 0; 
+  font-size: 12px;
+  font-weight: 300;
+  color: #000;
+}
+
+
+.doctor-qualification,
+.doctor-designation,
+.doctor-subdept {
+  margin-bottom: 5px; 
+}
+
+.rotate {
+  width: 915px;
+  height: 412px;
+  object-fit: fill;
+/*  transform: rotate(270deg);  */   
+}
+
+
+
