@@ -14,18 +14,6 @@
 }
 
 
-
-.header {
-  margin: auto;
-  color: white;
-  background: #0000001a;
-  padding: 5px 10px; /* Adjust padding */
-  font-size: 18px;
-  text-align: center;
-  width: 389px;
-  /* height: 412px; */
-}
-
 .content-style {
   margin: 5px 0; 
   font-size: 12px;
@@ -41,10 +29,12 @@
 }
 
 .rotate {
-  width: 915px;
+  width: 850px;
   height: 412px;
   object-fit: fill;
-/*  transform: rotate(270deg);  */   
+ transform: rotate(270deg); 
+ background-repeat: no-repeat;
+
 }
 
 
