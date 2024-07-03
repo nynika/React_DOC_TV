@@ -80,9 +80,9 @@ export default TV1Slide1;
 
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-/* import background from "../../../assets/images/background.jpg"; */
 import "../index.css";
-import "../../../../src/assets/styles/style.css"; // Ensure this path is correct
+import "../../../../src/assets/styles/style.css"; 
+/* import background from "../../../assets/images/background.jpg"; */
 
 const TV1Slide1 = () => {
   const [doctors, setDoctors] = useState([]);
@@ -90,7 +90,7 @@ const TV1Slide1 = () => {
   const [error, setError] = useState(null);
   const [currentChunkIndex, setCurrentChunkIndex] = useState(0);
   const chunkSize = 4;
-  const imageBasePath = process.env.PUBLIC_URL + "/images/"; // Using PUBLIC_URL to access public directory
+  const imageBasePath = process.env.PUBLIC_URL + "/images/"; 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -133,63 +133,50 @@ const TV1Slide1 = () => {
 
   const currentDoctors = getCurrentChunk();
 
-  
-return (
-  <div>
-    <div className="hdrdivider" data-events="auto" data-display="block" style={{ zIndex: 1 }}></div>
-    <h1 className="head1">
-      INSTITUTE FOR LIVER DISEASE AND TRANSPLANTATION
-    </h1>
-    <div className="rotate">
-      <div
-        style={{
-          height: "1080px",
-          width: "600px",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          marginTop: "60px",
-          position: "relative"
-        }}
-      >
-        {/* Map over the current chunk of doctors */}
-        {currentDoctors.map((details, idx) => (
-          <div className="container drprofileBg" key={`${currentChunkIndex}-${idx}`}>
-            <div className="flex">
-              <div>
-                <img
-                  src={`${imageBasePath}${details.doc_Img}`}
-                  alt={details.doctorName}
-                  className="doctors-image"
-                />
-              </div>
-
-              <div className="content-style">
-                <div className="doctor-name">
-                  <span>{details.doctorName}</span>
+  return (
+    <div>
+      <div className="hdrdivider" data-events="auto" data-display="block" style={{ zIndex: 1 }}></div>
+      <h1>INSTITUTE FOR LIVER DISEASE AND TRANSPLANTATION</h1>
+      <div className="rotate">
+        <div style={{ marginTop: "50%" }}>
+          {/* Map over the current chunk of doctors */}
+          {currentDoctors.map((details, idx) => (
+            <div className="container drprofileBg" key={`${currentChunkIndex}-${idx}`}>
+              <div className="flex">
+                <div>
+                  <img
+                    src={`${imageBasePath}${details.doc_Img}`}
+                    alt={details.doctorName}
+                    className="doctors-image"
+                  />
                 </div>
+
                 <div className="content-style">
-                  <div className="doctor-qualification">
-                    <span>{details.qualification}</span>
+                  <div className="doctor-name">
+                    <span>{details.doctorName}</span>
                   </div>
-                  <div className="doctor-designation">
-                    <span>{details.designation}</span>
-                  </div>
-                  <div className="doctor-subdept">
-                    <span>{details.subDepartment}</span>
+                  <div className="content-style">
+                    <div className="doctor-qualification">
+                      <span>{details.qualification}</span>
+                    </div>
+                    <div className="doctor-designation">
+                      <span>{details.designation}</span>
+                    </div>
+                    <div className="doctor-subdept">
+                      <span>{details.subDepartment}</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default TV1Slide1;
-
 
 
 
