@@ -20,25 +20,25 @@ body {
 body::before {
     content: "";
     position: absolute;
-    bottom: 0%;
-    left: 0%;
-    width: 180%;
-    height: 500%;
+    bottom: 5%;
+    left: 5%;
+    width: 150%;
+    height: 430%;
     background-image: url('../images/odd.jpg'); 
     background-repeat: no-repeat;
     background-size: cover;
-    transform: rotate(270deg) translate(-50%, -50%);
+    transform: rotate(50deg) translate(-50%, -50%);
     transform-origin: center center;   
 }
 
 /* Divider style */
 .hdrdivider {
     position: absolute;
-    top: -10%;
-    width: 900px;
-    height: 85px;
-    left: 5%;
-    transform: translate(-50%, 0) rotate(270deg); 
+    top: 82%;
+    width: 680px;
+    height: 65px;
+    left: 94%;
+    transform: translate(-50%, 0) rotate(90deg);
     border-bottom: #303030 solid 4px;
     border-top: #303030 solid 4px;
     box-sizing: border-box;
@@ -47,13 +47,13 @@ body::before {
 /* Header style */
 h1 {
     position: absolute;
-    top: -9.5%;
-    left: 5%;
+	top: 90%;
+    left: 94%;
     color: rgb(0, 0, 0);
-    font-size: 28px;
+    font-size: 25px;
     text-align: center;
     font-weight: bold;
-    transform: translate(-50%, -50%) rotate(270deg);
+	transform: translate(-50%, -50%) rotate(90deg);
     width: 100%;
     box-sizing: border-box;
 }
@@ -61,212 +61,99 @@ h1 {
 /* Doctor profile styles */
 .drprofileBg {
     position: relative;
-    top: 1%;
-    width: 920px;
-    height: 270px;
-    margin-left: 370px;
+	top: -480px; /* Example adjustment */
+    width: 725px;
+    height: 200px;
+    margin-left: 250px;
     background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%,rgba(0,0,0,0.05) 100%);
     border-radius: 10px;
     border-bottom: #303030 solid 2px;
-    margin-bottom: 80px; /* Add margin-bottom to space out doctor containers */
+    margin-bottom: 25px; /* Add margin-bottom to space out doctor containers */
+
 }
+
+.doctor-name {
+    position: relative;
+    right: 25%;
+    margin-bottom: 85px;
+    width: 680px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 20px 10px 10px 10px;
+    background-color: #022633;
+    color: #FEFEFE;
+    font-size: 25px;
+    text-align: left;
+/*  padding: 4px 0px 10px; */
+     padding-left: 135px;
+}
+
 
 .doctors-image {
     position: relative;
-    margin-top: -0%;
-    margin-left: -45%;
-    height: 270px;
-    width: 270px;
+    margin-top: 10%;
+    margin-left: -25%;
+    height: 195px;
+    width: 195px;
     margin-bottom: 50px;
     border-radius: 50%; /* Changed to 50% for circular image */
     object-fit: cover;
     z-index: 999;
 }
 
-.doctor-name {
-    position: relative;
-    right: 32%;
-    margin-bottom: 145px;
-    width: 920px;
-    height: 80px;
-    overflow: hidden;
-    border-radius: 20px 10px 10px 10px;
-    background-color: #022633;
-    color: #FEFEFE;
-    font-size: 25px;
-    text-align: center;
-    padding: 25px 0px 20px;
-}
-
-.doctor-name span {
-    display: block; /* Ensure the span takes up the full width */
-}
-
 /* Doctor information styles */
+
 .doctor-qualification, .doctor-designation, .doctor-subdept {
     position: relative;
     font-family: 'Andes Rounded W01 Black';
-    left: -10%;
+    left: -5%; 
     text-align: left; /* Align text to the right */
     overflow: hidden;
     padding-right: 0px; /* Adjust padding as needed */
     white-space: normal; 
     word-wrap: break-word; /* Break long words to fit the container */
-    max-width: 650px; /* Adjusted maximum width */
+    max-width: 610px; /* Adjusted maximum width */
+	margin-bottom: 5px;  
 }
+
+
 
 .doctor-qualification {
-    top: -120px; /* Adjusted for proper positioning */
-    font-size: 1.2em; /* Adjusted font size */
-    font-weight: 700;
+    top: -80px; /* Adjusted for proper positioning */
+    font-size: 1.3em; /* Adjusted font size */
+    font-weight: 600;
     color: black;
+
+    max-width: 500px; 
+    line-height: 1.2; 
+    padding: 0px; /* Adjust padding as needed */
+    margin: 0.9 0 30px 0; /* Adjust margin as needed */
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
+
 .doctor-designation {
-    top: -120px; /* Adjusted for proper positioning */
+    top: -78px; /* Adjusted for proper positioning */
     font-size: 1.5em;
     font-weight: 700;
     color: black;
-    line-height: 1.5;
+
+	max-width: 500px; 
+    line-height: 1.2; 
+    padding: 0px; /* Adjust padding as needed */
+    margin: 0.9 0 30px 0; /* Adjust margin as needed */
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+
 }
 
 .doctor-subdept {
-    top: -115px; /* Adjusted for proper positioning */
+    top: -68px; /* Adjusted for proper positioning */
     font-size: 2em;
     font-weight: 700;
     color: #000000;
     line-height: 1;
 }
-
-/* Additional utility styles */
-ul {
-    margin: 0px;
-    width: 100%;
-    height: 100%;
-    list-style-type: none;
-}
-
-.fullsize {
-    top: 0px;
-    left: 0px;
-    width: 1080px;
-    height: 1920px;
-}
-
-.font {
-    font-family: 'Andes Rounded W01 Black';
-    font-weight: 900;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.hdrstyle {
-    left: 20px;
-    padding-top: 5px;
-    font-size: 36px;
-    color: #000;
-    line-height: 1.0;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.subhdrstyle {
-    left: 20px;
-    font-size: 36px;
-    line-height: 1.0;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.hdr {
-    position: absolute;
-    top: 20px;
-    left: 0px;
-    width: 1080px;
-    height: 80px;
-    overflow: hidden;
-}
-
-.subhdr {
-    position: absolute;
-    top: 130px;
-    left: 0px;
-    width: 1080px;
-    height: 60px;
-    overflow: hidden;
-}
-
-.drBg {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    top: 150px;
-    margin: auto;
-    padding-bottom: 60px;
-}
-
-.wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 300px;
-}
-
-.drphotoSquare img {
-    width: 100%;
-}
-
-.drphotoSquare {
-    position: absolute; 
-    top: 8px;
-    left: 0px; 
-    border-radius: 50%;
-    width: 275px;
-    height: 275px;
-    overflow: hidden;
-    animation: morph 3s linear infinite;
-    background: linear-gradient(to top, #FEFEFE 0%, #D5996F 100%);
-}
-
-.drphoto {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background: transparent;
-}
-
-.divider {
-    position: absolute; 
-    width: 850px; 
-    top: 280px; 
-    left: 30px; 
-    height: 2px; 
-    background-color: #707070;
-}
-
-.effect-slide-in-right {
-    transform: translateX(20%);
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
-}
-
-.effect-slide-in-right.show {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.effect-slide-in-bottom {
-    transform: translateY(20%);
-    opacity: 0;
-    transition: all 0.3s;
-}
-
-.effect-slide-in-bottom.show {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-
-
-
