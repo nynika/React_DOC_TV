@@ -82,7 +82,6 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import "../index.css";
 import "../../../../src/assets/styles/style.css"; 
-/* import background from "../../../assets/images/background.jpg"; */
 
 const TV1Slide1 = () => {
   const [doctors, setDoctors] = useState([]);
@@ -95,7 +94,7 @@ const TV1Slide1 = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.15.3/NewHIS/api/his/Get_Doctor_TV?TvTag=tv1');
+        const response = await axios.get('http://192.168.15.3/NewHIS/api/his/Get_Doctor_TV?TvTag=tv8');
         console.log('API Response:', response.data);
         setDoctors(response.data || []); // Assuming the response data is an array
         setLoading(false);
@@ -111,17 +110,45 @@ const TV1Slide1 = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentChunkIndex(prevIndex => (prevIndex + 1) % Math.ceil(doctors.length / chunkSize));
-    }, 4000); // Change the interval time as needed (4000ms = 4 seconds)
+      setCurrentChunkIndex(prevIndex => (prevIndex + 1) % chunks.length);
+    }, 5000); // Change the interval time as needed (5000ms = 5 seconds)
 
     return () => clearInterval(interval);
   }, [doctors]); // Re-run the effect if the doctors array changes
 
-  // Function to get the current chunk of doctors
-  const getCurrentChunk = () => {
-    const start = currentChunkIndex * chunkSize;
-    return doctors.slice(start, start + chunkSize);
+
+  const groupDoctorsByDepartment = (doctors) => {
+    return doctors.reduce((acc, doctor) => {
+      if (!acc[doctor.department]) {
+        acc[doctor.department] = [];
+      }
+      acc[doctor.department].push(doctor);
+      return acc;
+    }, {});
   };
+
+  const createChunksFromGroups = (groupedDoctors, chunkSize) => {
+    let chunks = [];
+    
+    Object.keys(groupedDoctors).forEach(department => {
+      const doctors = groupedDoctors[department];
+      for (let i = 0; i < doctors.length; i += chunkSize) {
+        chunks.push({ 
+          department, 
+          doctors: doctors.slice(i, i + chunkSize) 
+        });
+      }
+    });
+    
+    return chunks;
+  };
+
+  const groupedDoctors = groupDoctorsByDepartment(doctors);
+  const chunks = createChunksFromGroups(groupedDoctors, chunkSize);
+  const currentChunk = chunks[currentChunkIndex] || { department: '', doctors: [] };
+
+
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -131,16 +158,14 @@ const TV1Slide1 = () => {
     return <div>Error loading data: {error.message}</div>;
   }
 
-  const currentDoctors = getCurrentChunk();
-
   return (
     <div>
       <div className="hdrdivider" data-events="auto" data-display="block" style={{ zIndex: 1 }}></div>
-      <h1>INSTITUTE FOR LIVER DISEASE AND TRANSPLANTATION</h1>
+      <h1>{currentChunk.department}</h1>
       <div className="rotate">
-        <div style={{ marginTop: "50%" }}>
+        <div>
           {/* Map over the current chunk of doctors */}
-          {currentDoctors.map((details, idx) => (
+          {currentChunk.doctors.map((details, idx) => (
             <div className="container drprofileBg" key={`${currentChunkIndex}-${idx}`}>
               <div className="flex">
                 <div>
@@ -177,7 +202,6 @@ const TV1Slide1 = () => {
 };
 
 export default TV1Slide1;
-
 
 
 
