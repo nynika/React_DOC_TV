@@ -1,0 +1,122 @@
+
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import "../index.css";
+import "../../../../src/assets/styles/style.css";
+
+const TV1Slide1 = () => {
+  const [doctors, setDoctors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(1); // Initialize to 1
+  const imageBasePath = process.env.PUBLIC_URL + "/images/";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://192.168.15.3/NewHIS/api/his/Get_Doctor_TV?TvTag=tv1');
+        console.log('API Response:', response.data);
+        setDoctors(response.data || []); // Assuming the response data is an array
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching the data', error);
+        setError(error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const maxSlides = Math.max(...doctors.map(doc => doc.slide || 1));
+    const intervalDuration = 28000 / maxSlides;
+
+    const interval = setInterval(() => {
+      setCurrentSlide(prevSlide => (prevSlide < maxSlides ? prevSlide + 1 : 1));
+    }, intervalDuration);
+
+    return () => clearInterval(interval);
+  }, [doctors]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading data: {error.message}</div>;
+  }
+
+  const getCurrentDoctors = () => {
+    // Filter doctors by the current slide
+    const filteredDoctors = doctors.filter(doc => doc.slide === currentSlide);
+    return filteredDoctors.sort((a, b) => a.slideSequence - b.slideSequence); // Sort by SlideSequence
+  };
+
+  const groupDoctorsByDepartment = (doctors) => {
+    return doctors.reduce((acc, doctor) => {
+      if (!acc[doctor.department]) {
+        acc[doctor.department] = [];
+      }
+      acc[doctor.department].push(doctor);
+      return acc;
+    }, {});
+  };
+
+  const groupedDoctors = groupDoctorsByDepartment(doctors);
+  const currentDoctors = getCurrentDoctors();
+
+  // Get the department of the current doctors to set the header
+  const currentDepartment = currentDoctors.length > 0 ? currentDoctors[0].department : 'No Department';
+
+  console.log('Current Slide:', currentSlide);
+  console.log('Current Doctors:', currentDoctors);
+
+  return (
+    <div>
+      <div className="hdrdivider" data-events="auto" data-display="block" style={{ zIndex: 1 }}></div>
+      {/* Dynamic Header */}
+      <h1>{currentDepartment}</h1>
+      <div className="rotate">
+        <div>
+          {/* Map over the current chunk of doctors */}
+          {currentDoctors.length > 0 ? (
+            currentDoctors.map((details, idx) => (
+              <div className="container drprofileBg" key={`${currentSlide}-${idx}`}>
+                <div className="flex">
+                  <div>
+                    <img
+                      src={`${imageBasePath}${details.doc_Img}`}
+                      alt={details.doctorName}
+                      className="doc_img"
+                    />
+                  </div>
+                  <div className="content-style">
+                    <div className="doctor-name">
+                      <span>{details.doctorName}</span>
+                    </div>
+                    <div className="content-style">
+                      <div className="doctor-qualification">
+                        <span>{details.qualification}</span>
+                      </div>
+                      <div className="doctor-designation">
+                        <span>{details.designation}</span>
+                      </div>
+                      <div className="doctor-subdept">
+                        <span>{details.subDepartment}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div>No doctors available for this slide.</div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TV1Slide1;
